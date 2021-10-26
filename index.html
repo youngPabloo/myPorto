@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- w3school css alert -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- title icon -->
     <link rel="icon" href="img/kadek.png" type="image/png">
     <!-- unicorns -->
@@ -384,32 +382,13 @@
                     </div>
                 </div>
                 
-                <!-- error message -->
-                <?php 
-                    $Msg = '';
-
-                    // if user not input the fill in column
-                    if(isset($_GET['error'])){
-                        $Msg = 'Masukkan form yang kosong!';
-
-                        echo '<div class="w3-panel w3-yellow w3-card-4">'. $Msg .'</div>';
-                    }
-
-                    // user succes fill in all column
-                    if(isset($_GET['succes'])){
-                        $Msg = 'Pesan anda telah dikirim';
-
-                        echo '<div class="w3-panel w3-yellow w3-card-4">'. $Msg .'</div>';
-
-                    }
-                ?>
-
+                <!-- error msg -->
                 <!-- form -->
-                <form action="process.php" method="post" class="contact__form grid">
+                <form action="php/process.php" method="post" class="contact__form grid" name="form-field" id="form-field">
                     <div class="contact__inputs grid">
                         <div class="contact__content">
                             <label for="" class="contact__label">Nama</label>
-                            <input type="text" name="Uname" class="contact__input">
+                            <input type="text" name="nama" class="contact__input" required>
                         </div>
 
                         <div class="contact__content">
@@ -417,25 +396,18 @@
                             <input type="email" name="email" class="contact__input">
                         </div>
 
+
+
                         <div class="contact__content">
                             <label for="" class="contact__label">Pesan</label>
-                            <textarea name="msg" id="" cols="0" rows="7" class="contact__input"></textarea>
+                            <textarea name="msg" id="" cols="0" rows="7" class="contact__input" required></textarea>
                         </div>
 
                         <div>
-                            <button class="button--flex" name="btn-send" id="btn-send" style="  
-                            background-color: #4CAF50; /* Green */
-                            border: none;
-                            color: white;
-                            padding: 15px 32px;
-                            text-align: center;
-                            text-decoration: none;
-                            display: inline-block;
-                            font-size: 20px;
-                            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-                            ">
-                                kirim
-                            </button>
+                            <a href="#" class="button button--flex" id="btn-send"  name="btn-send">
+								Kirim pesan!
+								<i class="uil uil-message button__icon"></i>
+							</a>
                         </div>
                     </div>
                 </form>
@@ -466,7 +438,7 @@
                         <a href="#home" class="footer__link">Home</a>
                     </li>
                     <li>
-                        <a href="#contact" class="footer__link">contact</a>
+                        <a href="#contact" class="footer__link">Contact Me</a>
                     </li>
                 </ul>
 
@@ -490,6 +462,9 @@
     <a href="#" class="scrollup" id="scroll-up">
         <i class="uil uil-angle-double-up scrollup__icon"></i>
     </a>
+
+    <!-- personal js-->
+    <script src = "js/form-alert.js"></script>
     <!-- swiper -->
     <script src="js/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -501,7 +476,7 @@
         swal({
             title: 'PERHATIAN',
             icon: 'warning',
-            text: 'Web dalam pengembangan!, dilarang mengirim link web ini sembarangan, agar tidak memenuhi traffic!'
+            text: 'Web dalam pengembangan!, dilarang mengirim link web ini sembarangan, agar tidak memenuhi traffic!, untuk pengalaman terbaik gunakan Dark Mode'
         });
 
         function alertService() {
@@ -514,7 +489,7 @@
 
         function alertPorto() {
             swal({
-                title: 'Sorry',
+                title: 'Sorry :( ',
                 text: 'Source code belum tersedia :D',
                 button: 'Okay..'
             });
